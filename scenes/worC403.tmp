@@ -1,0 +1,488 @@
+[gd_scene load_steps=51 format=3 uid="uid://6dikkf4fk5jl"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_h6s5p"]
+[ext_resource type="Texture2D" uid="uid://dwjjq1rfnae7a" path="res://assets/world/autumn_field_puresky_2k.hdr" id="1_xhcgl"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_body_3d.gd" id="2_prle8"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_influencer_3d/aero_surface_3d/manual_aero_surface_3d/manual_aero_surface_3d.gd" id="3_5lusr"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_influencer_3d/aero_surface_3d/manual_aero_surface_3d/manual_aero_surface_config.gd" id="4_0onek"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_influencer_3d/aero_surface_3d/aero_surface_config.gd" id="5_407cd"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/control_configs/aero_influencer_control_axis_config.gd" id="6_o37i5"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/control_configs/aero_influencer_control_config.gd" id="7_b2qqy"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/AeroControlComponent.gd" id="8_iu0bw"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/control_configs/aero_control_config.gd" id="9_ryqap"]
+[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/aero_thruster_component/AeroJetThrusterComponent.gd" id="10_lff3i"]
+
+[sub_resource type="Gradient" id="Gradient_sr0ov"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfg48"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kyu6o"]
+seamless = true
+color_ramp = SubResource("Gradient_sr0ov")
+noise = SubResource("FastNoiseLite_cfg48")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_fb4c0"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_kyu6o"),
+"vertex_normals_distance": 128.0
+}
+show_checkered = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_haqu5"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 960.0
+distance_fade_max_distance = 480.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_r03d4"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_haqu5")
+generated_type = 1
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_j1b7j"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_r03d4")])
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hk54o"]
+panorama = ExtResource("1_xhcgl")
+energy_multiplier = 0.1
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PanoramaSkyMaterial_hk54o")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_f8w8m"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5npy"]
+size = Vector3(6, 0.314209, 4.59955)
+
+[sub_resource type="Curve" id="Curve_4rgn1"]
+bake_resolution = 21
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.25, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_8kxtx"]
+min_value = 1.0
+max_value = 1.69
+bake_resolution = 23
+_data = [Vector2(0.053, 1), 0.0, 0.0, 0, 0, Vector2(0.088, 1.324), 4.057, 4.057, 0, 0, Vector2(0.256, 1), 0.181, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_g08go"]
+min_value = -1.0
+bake_resolution = 36
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.125, 1), 0.0, 0.0, 0, 0, Vector2(0.25, 1.45519e-11), 0.0, 0.0, 0, 0, Vector2(0.375, -0.4), 0.0, 0.0, 0, 0, Vector2(0.415, -1), 0.0, 0.0, 0, 0, Vector2(0.585, 1), 0.0, 0.0, 0, 0, Vector2(0.625, 0.4), 0.0, 0.0, 0, 0, Vector2(0.75, 1.45519e-11), 0.0, 0.0, 0, 0, Vector2(0.875, -1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 10
+
+[sub_resource type="Curve" id="Curve_6ba0g"]
+bake_resolution = 4
+_data = [Vector2(0, 1), 0.0, -2.09824, 0, 0, Vector2(0.406542, 0.490909), -0.666575, -0.666575, 0, 0, Vector2(1, 0.290909), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_bd2tu"]
+script = ExtResource("4_0onek")
+min_lift_coefficient = -2.0
+max_lift_coefficient = 2.0
+lift_aoa_curve = SubResource("Curve_g08go")
+min_drag_coefficient = 0.0
+max_drag_coefficient = 1.0
+drag_aoa_curve = SubResource("Curve_4rgn1")
+sweep_drag_multiplier_curve = SubResource("Curve_6ba0g")
+drag_at_mach_multiplier_curve = SubResource("Curve_8kxtx")
+
+[sub_resource type="Resource" id="Resource_m2uur"]
+script = ExtResource("5_407cd")
+chord = 1.0
+span = 3.15
+auto_aspect_ratio = true
+aspect_ratio = 3.15
+
+[sub_resource type="Resource" id="Resource_kewgk"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(-1, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_j4ijx"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(1, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_2t5u3"]
+script = ExtResource("7_b2qqy")
+enable_control = true
+max_value = Vector3(0.1, 0, 0)
+limit_movement_speed = false
+movement_speed = 1.0
+pitch_config = SubResource("Resource_kewgk")
+roll_config = SubResource("Resource_j4ijx")
+
+[sub_resource type="Resource" id="Resource_wap1r"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(-1, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_1o3pc"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(-1, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_n8mxg"]
+script = ExtResource("7_b2qqy")
+enable_control = true
+max_value = Vector3(0.1, 0, 0)
+limit_movement_speed = false
+movement_speed = 1.0
+pitch_config = SubResource("Resource_wap1r")
+roll_config = SubResource("Resource_1o3pc")
+
+[sub_resource type="Resource" id="Resource_1v7as"]
+script = ExtResource("5_407cd")
+chord = 1.0
+span = 1.89
+auto_aspect_ratio = true
+aspect_ratio = 1.89
+
+[sub_resource type="Resource" id="Resource_3pmc4"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(-1, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_jeqnx"]
+script = ExtResource("7_b2qqy")
+enable_control = true
+max_value = Vector3(0.2, 0, 0)
+limit_movement_speed = false
+movement_speed = 1.0
+pitch_config = SubResource("Resource_3pmc4")
+
+[sub_resource type="Resource" id="Resource_qgjsp"]
+script = ExtResource("5_407cd")
+chord = 1.0
+span = 1.25
+auto_aspect_ratio = true
+aspect_ratio = 1.25
+
+[sub_resource type="Resource" id="Resource_b2de6"]
+script = ExtResource("6_o37i5")
+contribution = Vector3(0, 0, 0)
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_gh4aa"]
+script = ExtResource("7_b2qqy")
+enable_control = true
+max_value = Vector3(0.1, 0, 0)
+limit_movement_speed = false
+movement_speed = 1.0
+yaw_config = SubResource("Resource_b2de6")
+
+[sub_resource type="Resource" id="Resource_10jx8"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = -1.0
+max_limit = 1.0
+positive_event = &"pitch_up"
+negative_event = &"pitch_down"
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &""
+cumulative_negative_event = &""
+cumulative_rate = 1.0
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_xiygt"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = -1.0
+max_limit = 1.0
+positive_event = &"yaw_left"
+negative_event = &"yaw_right"
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &""
+cumulative_negative_event = &""
+cumulative_rate = 1.0
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_t5wd2"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = -1.0
+max_limit = 1.0
+positive_event = &"roll_left"
+negative_event = &"roll_right"
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &""
+cumulative_negative_event = &""
+cumulative_rate = 1.0
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_pjv07"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = 0.0
+max_limit = 1.0
+positive_event = &""
+negative_event = &""
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &"throttle_up"
+cumulative_negative_event = &"throttle_down"
+cumulative_rate = 0.5
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_67d2p"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = 0.0
+max_limit = 1.0
+positive_event = &""
+negative_event = &""
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &""
+cumulative_negative_event = &""
+cumulative_rate = 1.0
+easing = 1.0
+
+[sub_resource type="Resource" id="Resource_hcr5q"]
+script = ExtResource("9_ryqap")
+use_bindings = true
+input = 0.0
+min_limit = -1.0
+max_limit = 1.0
+positive_event = &""
+negative_event = &""
+enable_smoothing = false
+smoothing_rate = 1.0
+cumulative_positive_event = &""
+cumulative_negative_event = &""
+cumulative_rate = 1.0
+easing = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1jut"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_jn125"]
+material = SubResource("StandardMaterial3D_r1jut")
+top_radius = 0.2
+bottom_radius = 0.2
+height = 0.12
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q15ck"]
+material = SubResource("StandardMaterial3D_r1jut")
+top_radius = 0.12
+bottom_radius = 0.12
+height = 0.12
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_h6s5p")
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://resources/terrain_data"
+material = SubResource("Terrain3DMaterial_fb4c0")
+assets = SubResource("Terrain3DAssets_j1b7j")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f8w8m")
+camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.605197, 0.796076, 0, -0.796076, 0.605197, -4.86868, 8.33126, 2.18251)
+shadow_enabled = true
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8991, 25.834, -30.0061)
+size = Vector3(10000, 10000, 1000)
+
+[node name="AeroBody3D" type="VehicleBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.97774, 0.316208)
+mass = 500.0
+center_of_mass_mode = 1
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("2_prle8")
+show_debug = true
+update_debug = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0328369, 0.0855293, 0.927048)
+shape = SubResource("BoxShape3D_x5npy")
+
+[node name="Camera3D" type="Camera3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.844141, 0.536121, 0, -0.536121, 0.844141, 0, 2.74202, 4.53033)
+current = true
+
+[node name="WingR" type="Node3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6, 0.0969429, -0.365575)
+script = ExtResource("3_5lusr")
+manual_config = SubResource("Resource_bd2tu")
+wing_config = SubResource("Resource_m2uur")
+actuation_config = SubResource("Resource_2t5u3")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AeroBody3D/WingR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.245)
+size = Vector3(3.1312, 0.0202484, 1.0014)
+
+[node name="WingL" type="Node3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 0.0969429, -0.365575)
+script = ExtResource("3_5lusr")
+manual_config = SubResource("Resource_bd2tu")
+wing_config = SubResource("Resource_m2uur")
+actuation_config = SubResource("Resource_n8mxg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="AeroBody3D/WingL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0.245)
+size = Vector3(3.1312, 0.0202484, 1.0014)
+
+[node name="Elevator" type="Node3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.158588, 2.3331)
+script = ExtResource("3_5lusr")
+manual_config = SubResource("Resource_bd2tu")
+wing_config = SubResource("Resource_1v7as")
+actuation_config = SubResource("Resource_jeqnx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AeroBody3D/Elevator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00358391, 0, 0.245)
+size = Vector3(1.88639, 0.0202484, 1.0014)
+
+[node name="Rudder" type="Node3D" parent="AeroBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.785603, 2.3331)
+script = ExtResource("3_5lusr")
+manual_config = SubResource("Resource_bd2tu")
+wing_config = SubResource("Resource_qgjsp")
+actuation_config = SubResource("Resource_gh4aa")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="AeroBody3D/Rudder"]
+transform = Transform3D(0.999988, 1.95399e-13, 0, -1.95399e-13, 0.999988, 0, 0, 0, 1, -0.00534701, 7.10543e-15, 0.250234)
+size = Vector3(1.25167, 0.0202484, 0.990936)
+
+[node name="AeroControlComponent" type="Node" parent="AeroBody3D"]
+script = ExtResource("8_iu0bw")
+pitch_control_config = SubResource("Resource_10jx8")
+yaw_control_config = SubResource("Resource_xiygt")
+roll_control_config = SubResource("Resource_t5wd2")
+throttle_control_config = SubResource("Resource_pjv07")
+brake_control_config = SubResource("Resource_67d2p")
+collective_control_config = SubResource("Resource_hcr5q")
+
+[node name="AeroJetThrusterComponent" type="Marker3D" parent="AeroBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0197334, 3.32204)
+script = ExtResource("10_lff3i")
+
+[node name="WheelRight" type="VehicleWheel3D" parent="AeroBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 1.14126, -0.135404, -0.254388)
+use_as_traction = true
+wheel_radius = 0.2
+suspension_stiffness = 150.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBody3D/WheelRight"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_jn125")
+
+[node name="WheelLeft" type="VehicleWheel3D" parent="AeroBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -1.141, -0.135, -0.254)
+use_as_traction = true
+wheel_radius = 0.2
+suspension_stiffness = 150.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBody3D/WheelLeft"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_jn125")
+
+[node name="WheelRear" type="VehicleWheel3D" parent="AeroBody3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.0239646, 2.86087)
+use_as_traction = true
+wheel_radius = 0.12
+suspension_stiffness = 120.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AeroBody3D/WheelRear"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_q15ck")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="kmh" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "100 km/h"
+
+[node name="knots" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "400 kn"

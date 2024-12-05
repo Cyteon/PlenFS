@@ -18,9 +18,14 @@ config/icon="res://icon.svg"
 
 AeroUnits="*res://addons/godot_aerodynamic_plugin/core/singletons/aero_units.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/aerodynamics-plugin/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
+enabled=PackedStringArray("res://addons/godot_aerodynamic_plugin/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
 
 [input]
 
