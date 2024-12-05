@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cpbp7en0cerjl"]
 
-[ext_resource type="PackedScene" uid="uid://dx0v1i14fyw8c" path="res://addons/godot_aerodynamic_physics/demo/demo_plane.tscn" id="1_bbdyo"]
+[ext_resource type="PackedScene" uid="uid://dx0v1i14fyw8c" path="res://addons/godot_aerodynamic_plugin/demo/demo_plane.tscn" id="1_bbdyo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lajrc"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
