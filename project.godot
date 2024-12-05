@@ -13,3 +13,11 @@ config_version=5
 config/name="flight-game"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+AeroUnits="*res://addons/aerodynamics-plugin/core/singletons/aero_units.gd"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/aerodynamics-plugin/plugin.cfg", "res://addons/godot_super-wakatime/plugin.cfg", "res://addons/terrain_3d/plugin.cfg")
