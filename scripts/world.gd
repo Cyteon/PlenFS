@@ -12,3 +12,4 @@ func _process(delta: float) -> void:
 	
 	$CanvasLayer/Control/VBoxContainer/kmh.text = "%s km/h" % int(kmh)
 	$CanvasLayer/Control/VBoxContainer/knots.text = "%s kn" % int(kmh * 0.539957)
+	$CanvasLayer/Control/VBoxContainer/throttle.text = "%s" % int($AeroBody3D.throttle_command * 100) + "%"
