@@ -1,9 +1,7 @@
-[gd_scene load_steps=69 format=4 uid="uid://diumjgjp8fs6e"]
+[gd_scene load_steps=56 format=4 uid="uid://diumjgjp8fs6e"]
 
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_body_3d.gd" id="1_bscox"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/AeroControlComponent.gd" id="2_thbnj"]
-[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/utils/pid.gd" id="3_v4v3j"]
-[ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/flight_assist.gd" id="4_qru83"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/control_configs/aero_control_config.gd" id="5_u865j"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_influencer_3d/aero_surface_3d/manual_aero_surface_3d/manual_aero_surface_3d.gd" id="6_45tv4"]
 [ext_resource type="Script" path="res://scripts/player/camera.gd" id="6_ipdki"]
@@ -20,134 +18,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_er4iv"]
 friction = 0.0
-
-[sub_resource type="Resource" id="Resource_k70fk"]
-script = ExtResource("3_v4v3j")
-p = 0.001
-i = 0.0
-d = 0.01
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_owdeq"]
-script = ExtResource("3_v4v3j")
-p = 1.0
-i = 0.05
-d = 0.1
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_xl2cq"]
-script = ExtResource("3_v4v3j")
-p = 10.0
-i = 0.3
-d = 4.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_bs33c"]
-script = ExtResource("3_v4v3j")
-p = 0.8
-i = 0.0
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_alp5t"]
-script = ExtResource("3_v4v3j")
-p = 25.0
-i = 0.0
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_6xrl5"]
-script = ExtResource("3_v4v3j")
-p = 10.0
-i = 0.0
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_qsyv2"]
-script = ExtResource("3_v4v3j")
-p = 0.5
-i = 3.0
-d = 0.0
-clamp_integral = true
-min_integral = -0.2
-max_integral = 0.2
-
-[sub_resource type="Resource" id="Resource_6hvqc"]
-script = ExtResource("3_v4v3j")
-p = 0.2
-i = 0.0
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_uy624"]
-script = ExtResource("3_v4v3j")
-p = 0.0
-i = 0.4
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_uoc31"]
-script = ExtResource("3_v4v3j")
-p = 1.0
-i = 0.0
-d = 0.0
-clamp_integral = false
-min_integral = -1.0
-max_integral = 1.0
-
-[sub_resource type="Resource" id="Resource_yatnb"]
-script = ExtResource("4_qru83")
-max_angular_rates = Vector3(2, 1, 5)
-enable_flight_assist_x = true
-pitch_assist_pid = SubResource("Resource_qsyv2")
-enable_flight_assist_y = true
-yaw_assist_pid = SubResource("Resource_uoc31")
-enable_flight_assist_z = true
-roll_assist_pid = SubResource("Resource_6hvqc")
-enable_g_limiter = true
-g_limit = 9.0
-negative_g_limit = 3.0
-enable_aoa_limiter = true
-aoa_limit_start = 22.0
-aoa_limit_end = 25.0
-enable_control_adjustment = false
-tuned_airspeed = 100.0
-min_accounted_airspeed = 75.0
-tuned_density = 1.222
-min_accounted_air_density = 0.1
-enable_bank_angle_assist = false
-bank_angle_target = 0.0
-bank_angle_pid = SubResource("Resource_owdeq")
-enable_speed_hold = false
-speed_target = 0.0
-speed_pid = SubResource("Resource_uy624")
-enable_altitude_hold = false
-altitude_target = 0.0
-altitude_pid = SubResource("Resource_k70fk")
-enable_heading_hold = false
-heading_target = 0.0
-heading_pid = SubResource("Resource_6xrl5")
-enable_target_direction = false
-direction_target = Vector3(0, 0, 0)
-direction_pitch_pid = SubResource("Resource_xl2cq")
-direction_yaw_pid = SubResource("Resource_alp5t")
-direction_roll_pid = SubResource("Resource_bs33c")
 
 [sub_resource type="Resource" id="Resource_10jx8"]
 script = ExtResource("5_u865j")
@@ -385,7 +255,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_bi3a3"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0, 125, 0)
+max_value = Vector3(0, 126, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 throttle_config = SubResource("Resource_td2bx")
@@ -475,7 +345,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_alw04")
 
 [node name="AeroBody3D" type="VehicleBody3D"]
-mass = 500.0
+mass = 200.0
 physics_material_override = SubResource("PhysicsMaterial_er4iv")
 center_of_mass_mode = 1
 center_of_mass = Vector3(0, 1.2, 0.63)
@@ -485,7 +355,6 @@ script = ExtResource("1_bscox")
 
 [node name="AeroControlComponent" type="Node" parent="."]
 script = ExtResource("2_thbnj")
-flight_assist = SubResource("Resource_yatnb")
 pitch_control_config = SubResource("Resource_10jx8")
 yaw_control_config = SubResource("Resource_xiygt")
 roll_control_config = SubResource("Resource_t5wd2")
@@ -574,9 +443,10 @@ transform = Transform3D(-0.572641, -0.815002, -0.088619, 0.810619, -0.54677, -0.
 [node name="AeroVariablePropeller3D" type="Node3D" parent="." node_paths=PackedStringArray("propeller_blade")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00144668, 1.49708, 2.43385)
 script = ExtResource("13_ibvmo")
-propeller_pitch = 50.0
-collective = 50.0
+propeller_pitch = 45.0
+collective = 45.0
 propeller_collective_control_config = SubResource("Resource_4ic86")
+propeller_amount = 1
 propeller_blade = NodePath("ManualAeroSurface3D")
 propeller_speed_control_config = SubResource("Resource_bi3a3")
 angular_motor = Vector3(0, 300, 0)
