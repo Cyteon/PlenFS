@@ -511,7 +511,6 @@ center_of_mass_mode = 1
 linear_damp_mode = 1
 angular_damp_mode = 1
 script = ExtResource("2_prle8")
-show_debug = true
 update_debug = true
 
 [node name="AeroControlComponent" type="Node" parent="AeroBody3D"]
