@@ -14,9 +14,13 @@ func _ready() -> void:
 	
 	########## Start Other Licenses ##########
 	
-	3D Model \"Cessna 172\" by KOG_THORNS, used under the CC BY 4.0 / Cropped from original.
-	Available at: https://sketchfab.com/3d-models/cessna172-d1b15841c29c43d0862667300bad55a4
+	3D Model \"Cessna 172\" by KOG_THORNS, used under the CC BY 4.0 / Modified from original.
+	Available at: https://skfb.ly/oYXVT
 	Licensed under: CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/)
+	
+	Modifications:
+	- Split gauge meshes
+	- Fix some geometry
 	
 	########## End Other Licenses  ##########
 	
