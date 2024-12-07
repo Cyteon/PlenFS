@@ -169,7 +169,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_2t5u3"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.1, 0, 0)
+max_value = Vector3(0.05, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_kewgk")
@@ -188,7 +188,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_n8mxg"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.1, 0, 0)
+max_value = Vector3(0.05, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_wap1r")
@@ -209,7 +209,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_jeqnx"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.2, 0, 0)
+max_value = Vector3(0.1, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_3pmc4")
@@ -437,7 +437,7 @@ script = ExtResource("11_6a2v3")
 [node name="Propellers" parent="cessna_172/Cessna-172/Cessna_Exterior/Propellers_001" index="0"]
 visible = false
 
-[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="244"]
+[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="239"]
 transform = Transform3D(-0.572641, -0.815002, -0.088619, 0.810619, -0.54677, -0.209619, 0.122385, -0.191873, 0.973759, 0.00447844, -0.0316623, -0.0717789)
 
 [node name="AeroVariablePropeller3D" type="Node3D" parent="." node_paths=PackedStringArray("propeller_blade")]
