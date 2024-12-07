@@ -482,11 +482,16 @@ pixel_size = 0.0004
 text = "54534"
 outline_size = 0
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="InsideLight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.817828, 0.575462, 0, -0.575462, -0.817828, 0, 2.15855, 0)
-light_energy = 2.0
 shadow_enabled = true
 spot_range = 1.08409
 spot_angle = 30.0
+
+[node name="OutsideLight" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.9755, 0.22, 0, -0.22, -0.9755, 0, 0.979567, 2.19172)
+light_size = 0.1
+shadow_enabled = true
+spot_range = 10.0
 
 [editable path="cessna_172"]

@@ -41,6 +41,7 @@ _shader_parameters = {
 "vertex_normals_distance": 128.0
 }
 show_checkered = true
+show_region_grid = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ox6bk"]
 transparency = 4
@@ -104,10 +105,10 @@ script = ExtResource("1_h6s5p")
 data_directory = "res://resources/terrain"
 material = SubResource("Terrain3DMaterial_n4wja")
 assets = SubResource("Terrain3DAssets_7i18q")
-visible = false
-height_file_name = "C:/Users/Pkris/OneDrive/Skrivebord/projects/flight-game/assets/world/Export.exr"
-import_position = Vector2i(-2048, -2048)
-import_scale = 1000.0
+show_grid = true
+height_file_name = "C:/Users/Pkris/OneDrive/Skrivebord/projects/flight-game/assets/world/new.exr"
+import_position = Vector2i(-4000, -4000)
+import_scale = 800.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f8w8m")
@@ -122,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8991, 25.834, -30.0061)
 size = Vector3(10000, 10000, 1000)
 
 [node name="AeroBody3D" parent="." instance=ExtResource("4_nhixv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 986.462, 139.269, -585.741)
+transform = Transform3D(-0.18616, -0.227025, -0.955931, -0.0433963, 0.973889, -0.222839, 0.981561, 0, -0.191152, 986.462, 257.575, -585.741)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
