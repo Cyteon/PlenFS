@@ -48,3 +48,9 @@ func _process(delta: float) -> void:
 		
 		knots_indicator_2.rotation_degrees.z = -1.275 * (knots - 60) - 56
 		knots_indicator_3.rotation_degrees.z = -1.275 * (knots - 60) - 56
+	
+	$AudioStreamPlayer3D.volume_db = -25 + 20 * get_parent().throttle_command
+
+
+func _on_audio_stream_player_3d_finished() -> void:
+	$AudioStreamPlayer3D.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://diumjgjp8fs6e"]
+[gd_scene load_steps=57 format=4 uid="uid://diumjgjp8fs6e"]
 
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_body_3d.gd" id="1_bscox"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/AeroControlComponent.gd" id="2_thbnj"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_influencer_3d/aero_rotator_3d/aero_variable_propeller_3d.gd" id="13_ibvmo"]
 [ext_resource type="Texture2D" uid="uid://dgcq8k7g1yafu" path="res://assets/vehicles/planes/cessna_172_Body_MAT_baseColor.png" id="14_j104v"]
 [ext_resource type="Texture2D" uid="uid://bxm3n0ywrl6fd" path="res://assets/vehicles/planes/cessna_172_Body_MAT_metallicRoughness.png" id="15_xj7bq"]
+[ext_resource type="AudioStream" uid="uid://bvaw640sqj7hb" path="res://assets/sfx/ambient.mp3" id="16_dinqb"]
 [ext_resource type="Script" path="res://scripts/plane/internals.gd" id="17_xalqi"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_er4iv"]
@@ -482,16 +483,24 @@ pixel_size = 0.0004
 text = "54534"
 outline_size = 0
 
-[node name="InsideLight" type="SpotLight3D" parent="."]
+[node name="InsideLight" type="SpotLight3D" parent="Internals"]
 transform = Transform3D(1, 0, 0, 0, -0.817828, 0.575462, 0, -0.575462, -0.817828, 0, 2.15855, 0)
 shadow_enabled = true
 spot_range = 1.08409
 spot_angle = 30.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Internals"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43516, 1.49464)
+stream = ExtResource("16_dinqb")
+volume_db = -20.0
+autoplay = true
 
 [node name="OutsideLight" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.9755, 0.22, 0, -0.22, -0.9755, 0, 0.979567, 2.19172)
 light_size = 0.1
 shadow_enabled = true
 spot_range = 10.0
+
+[connection signal="finished" from="Internals/AudioStreamPlayer3D" to="Internals" method="_on_audio_stream_player_3d_finished"]
 
 [editable path="cessna_172"]
