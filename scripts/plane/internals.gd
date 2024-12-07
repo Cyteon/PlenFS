@@ -6,6 +6,9 @@ extends Node3D
 @onready var knots_indicator_2 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Knots_Mach_Knots_indicator"
 @onready var knots_indicator_3 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Knots_Mach_Right_Knots_Indicator"
 @onready var left_alt_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Left_Alt_Indicator"
+@onready var left_alt_indicator_2 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Alt_Indicator_2"
+@onready var right_alt_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Right_Alt_indicator"
+@onready var heading_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Cessna_Interior_Meter_01_MAT_0_Meter_01_MAT_0_098"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -26,7 +29,12 @@ func _process(delta: float) -> void:
 	# Altitude indicators
 	
 	$LeftAltLabel.text = str(int(get_parent().altitude))
+	# Diffrent way of setting rot to verify altitude gauges working
 	left_alt_indicator.rotation_degrees = Vector3(-82, get_parent().altitude / 1000 * 36, 0)
+	$LeftAlt2Label.text = str(int(get_parent().altitude))
+	left_alt_indicator_2.rotation_degrees.y = get_parent().altitude / 1000 * 36
+	$RightAltLabel.text = str(int(get_parent().altitude))
+	right_alt_indicator.rotation_degrees.y = get_parent().altitude / 1000 * 36
 	
 	# Knots indicator
 	
@@ -49,8 +57,11 @@ func _process(delta: float) -> void:
 		knots_indicator_2.rotation_degrees.z = -1.275 * (knots - 60) - 56
 		knots_indicator_3.rotation_degrees.z = -1.275 * (knots - 60) - 56
 	
-	$AudioStreamPlayer3D.volume_db = -25 + 20 * get_parent().throttle_command
+	$AudioStreamPlayer3D.volume_db = -20 + 20 * get_parent().throttle_command
 
+	# Heading Indicator
+	
+	#heading_indicator.rotation_degrees.y = 16 - get_parent().rotation_degrees.y
 
 func _on_audio_stream_player_3d_finished() -> void:
 	$AudioStreamPlayer3D.play()

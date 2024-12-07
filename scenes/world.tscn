@@ -123,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8991, 25.834, -30.0061)
 size = Vector3(10000, 10000, 1000)
 
 [node name="AeroBody3D" parent="." instance=ExtResource("4_nhixv")]
-transform = Transform3D(-0.18616, -0.227025, -0.955931, 0.125686, 0.959443, -0.252336, 0.974448, -0.167122, -0.150077, 986.462, 256.942, -585.741)
+transform = Transform3D(-0.193314, -0.283757, -0.939208, 0.114377, 0.944221, -0.308814, 0.974448, -0.167122, -0.150077, 986.462, 256.942, -585.741)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
