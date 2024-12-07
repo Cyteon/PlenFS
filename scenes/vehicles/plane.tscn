@@ -169,7 +169,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_2t5u3"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.05, 0, 0)
+max_value = Vector3(0.03, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_kewgk")
@@ -188,7 +188,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_n8mxg"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.05, 0, 0)
+max_value = Vector3(0.03, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_wap1r")
@@ -209,7 +209,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_jeqnx"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.1, 0, 0)
+max_value = Vector3(0.05, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_3pmc4")
@@ -229,7 +229,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_gh4aa"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.1, 0, 0)
+max_value = Vector3(0.15, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 yaw_config = SubResource("Resource_b2de6")
@@ -481,5 +481,12 @@ transform = Transform3D(-1, 5.40709e-09, -8.72554e-08, 0, 0.998085, 0.0618499, 8
 pixel_size = 0.0004
 text = "54534"
 outline_size = 0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.817828, 0.575462, 0, -0.575462, -0.817828, 0, 2.15855, 0)
+light_energy = 2.0
+shadow_enabled = true
+spot_range = 1.08409
+spot_angle = 30.0
 
 [editable path="cessna_172"]
