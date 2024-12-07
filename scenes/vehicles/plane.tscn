@@ -417,28 +417,36 @@ actuation_config = SubResource("Resource_gh4aa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44086, 0.196365, -0.215454)
 use_as_traction = true
 wheel_radius = 0.2
-suspension_stiffness = 200.0
+suspension_stiffness = 100.0
 
 [node name="WheelLeft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.441, 0.196, -0.215)
 use_as_traction = true
 wheel_radius = 0.2
-suspension_stiffness = 200.0
+suspension_stiffness = 100.0
 
 [node name="WheelFront" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198975, 1.65186)
 use_as_traction = true
 wheel_radius = 0.2
-suspension_stiffness = 200.0
+suspension_stiffness = 100.0
 script = ExtResource("11_6a2v3")
+MAX_STEER = 0.5
 
 [node name="cessna_172" parent="." instance=ExtResource("12_8exbh")]
 
 [node name="Propellers" parent="cessna_172/Cessna-172/Cessna_Exterior/Propellers_001" index="0"]
 visible = false
 
-[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="239"]
-transform = Transform3D(-0.572641, -0.815002, -0.088619, 0.810619, -0.54677, -0.209619, 0.122385, -0.191873, 0.973759, 0.00447844, -0.0316623, -0.0717789)
+[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="216"]
+transform = Transform3D(-0.907886, -0.409777, -0.0884547, 0.417378, -0.903289, -0.0993197, -0.0392013, -0.12709, 0.991116, 0.00447844, -0.0316623, -0.0717789)
+
+[node name="Knots_Mach_Knots_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="217"]
+transform = Transform3D(0.558204, 0.829675, 0.00688146, -0.817185, 0.551198, -0.16849, -0.143584, 0.088428, 0.98568, 0.0313102, -0.0316731, -0.0715126)
+
+[node name="Left_Alt_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="220"]
+transform = Transform3D(1, 0, 0, 0, 0.139173, 0.990268, 0, -0.990268, 0.139173, 0.0225372, -0.022371, -0.070397)
+rotation_order = 0
 
 [node name="AeroVariablePropeller3D" type="Node3D" parent="." node_paths=PackedStringArray("propeller_blade")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00144668, 1.49708, 2.43385)
@@ -462,7 +470,13 @@ transform = Transform3D(1.31134e-09, -0.01, -3.82137e-17, 4.37114e-10, 1.91069e-
 mesh = SubResource("ArrayMesh_mbdo3")
 skeleton = NodePath("")
 
-[node name="Internals" type="Node" parent="."]
+[node name="Internals" type="Node3D" parent="."]
 script = ExtResource("17_xalqi")
+
+[node name="LeftAltLabel" type="Label3D" parent="Internals"]
+transform = Transform3D(-1, 5.40709e-09, -8.72554e-08, 0, 0.998085, 0.0618499, 8.74228e-08, 0.0618499, -0.998085, 0.256763, 1.66123, 0.780387)
+pixel_size = 0.0004
+text = "54534"
+outline_size = 0
 
 [editable path="cessna_172"]
