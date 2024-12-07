@@ -438,13 +438,16 @@ MAX_STEER = 0.5
 [node name="Propellers" parent="cessna_172/Cessna-172/Cessna_Exterior/Propellers_001" index="0"]
 visible = false
 
-[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="216"]
+[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="212"]
 transform = Transform3D(-0.907886, -0.409777, -0.0884547, 0.417378, -0.903289, -0.0993197, -0.0392013, -0.12709, 0.991116, 0.00447844, -0.0316623, -0.0717789)
 
-[node name="Knots_Mach_Knots_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="217"]
-transform = Transform3D(0.558204, 0.829675, 0.00688146, -0.817185, 0.551198, -0.16849, -0.143584, 0.088428, 0.98568, 0.0313102, -0.0316731, -0.0715126)
+[node name="Knots_Mach_Knots_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="213"]
+transform = Transform3D(0.558204, 0.829675, 0.00688145, -0.817185, 0.551198, -0.16849, -0.143584, 0.088428, 0.98568, 0.0313102, -0.0316731, -0.0715126)
 
-[node name="Left_Alt_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="220"]
+[node name="Knots_Mach_Right_Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="215"]
+transform = Transform3D(0.999976, 0.00117627, 0.00688145, 0, 0.985703, -0.168489, -0.00698126, 0.168485, 0.985679, -0.0243089, -0.0231567, -0.0699804)
+
+[node name="Left_Alt_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="217"]
 transform = Transform3D(1, 0, 0, 0, 0.139173, 0.990268, 0, -0.990268, 0.139173, 0.0225372, -0.022371, -0.070397)
 rotation_order = 0
 

@@ -4,6 +4,7 @@ extends Node3D
 @onready var steering_right = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Steering_MAT_0_001/Steering_Right"
 @onready var knots_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Knots_Indicator"
 @onready var knots_indicator_2 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Knots_Mach_Knots_indicator"
+@onready var knots_indicator_3 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Knots_Mach_Right_Knots_Indicator"
 @onready var left_alt_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Left_Alt_Indicator"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +39,7 @@ func _process(delta: float) -> void:
 		)
 		
 		knots_indicator_2.rotation_degrees.z = -0.1417 * knots - 48
+		knots_indicator_3.rotation_degrees.z = -0.1417 * knots - 48
 	else:
 		knots_indicator.rotation_degrees = Vector3(
 			12.1, -5.2,
@@ -45,3 +47,4 @@ func _process(delta: float) -> void:
 		)
 		
 		knots_indicator_2.rotation_degrees.z = -1.275 * (knots - 60) - 56
+		knots_indicator_3.rotation_degrees.z = -1.275 * (knots - 60) - 56
