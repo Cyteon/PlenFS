@@ -6,8 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cnop2tbjqh6wy" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Albedo.jpg" id="3_ppxd5"]
 [ext_resource type="PackedScene" uid="uid://cb3uve7ru8bk2" path="res://scenes/vehicles/plane.tscn" id="4_nhixv"]
 [ext_resource type="Texture2D" uid="uid://ptu8yt7oj3jl" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Normal.jpg" id="4_v0vbv"]
-[ext_resource type="Texture2D" uid="uid://bciw8tfra2pv5" path="res://assets/quixel/Rock_Other_xdvpeec_2K_surface_ms/xdvpeec_2K_Albedo.jpg" id="5_xfkcy"]
-[ext_resource type="Texture2D" uid="uid://cadlj4h50lqkg" path="res://assets/quixel/Rock_Other_xdvpeec_2K_surface_ms/xdvpeec_2K_Normal.jpg" id="6_7sm0d"]
+[ext_resource type="Texture2D" uid="uid://7awybl7xaxni" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Albedo.jpg" id="5_7q3bq"]
+[ext_resource type="Texture2D" uid="uid://dvgxlxwrkakat" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Normal.jpg" id="6_i5m8k"]
 
 [sub_resource type="Gradient" id="Gradient_gm7lh"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -66,15 +66,15 @@ name = "Wild Grass"
 albedo_texture = ExtResource("3_ppxd5")
 normal_texture = ExtResource("4_v0vbv")
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_1vucp"]
-name = "xdvpeec_2K_Albedo"
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xvy4w"]
+name = "Rock"
 id = 1
-albedo_texture = ExtResource("5_xfkcy")
-normal_texture = ExtResource("6_7sm0d")
+albedo_texture = ExtResource("5_7q3bq")
+normal_texture = ExtResource("6_i5m8k")
 
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_7i18q"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_w5neu")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nul75"), SubResource("Terrain3DTextureAsset_1vucp")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nul75"), SubResource("Terrain3DTextureAsset_xvy4w")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hk54o"]
 panorama = ExtResource("1_xhcgl")

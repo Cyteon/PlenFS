@@ -1,7 +1,0 @@
-Download the asset with, make sure its 2k, unzip the assets and place the folder here.
-The folder should be named exactly "Rock_Other_xdvpeec_2K_surface_ms"
-Only Albedo and Normal is required
-
-Asset Resolution: 2K
-Asset ID: xdvpeec
-Asset Link: https://quixel.com/megascans/home?category=surface&category=rock&category=cliff&search=rock&assetId=xdvpeec
