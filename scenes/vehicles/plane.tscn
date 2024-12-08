@@ -170,7 +170,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_2t5u3"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.03, 0, 0)
+max_value = Vector3(0.04, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_kewgk")
@@ -189,7 +189,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_n8mxg"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.03, 0, 0)
+max_value = Vector3(0.04, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_wap1r")
@@ -210,7 +210,7 @@ easing = 1.0
 [sub_resource type="Resource" id="Resource_jeqnx"]
 script = ExtResource("10_4at54")
 enable_control = true
-max_value = Vector3(0.05, 0, 0)
+max_value = Vector3(0.08, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 pitch_config = SubResource("Resource_3pmc4")

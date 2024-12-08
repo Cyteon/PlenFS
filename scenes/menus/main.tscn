@@ -36,7 +36,7 @@ grow_vertical = 0
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hxipr")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_hxipr")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_hxipr")
@@ -53,7 +53,7 @@ alignment = 0
 
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 96
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hxipr")
 theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_hxipr")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_hxipr")
