@@ -1,13 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://6dikkf4fk5jl"]
+[gd_scene load_steps=16 format=3 uid="uid://6dikkf4fk5jl"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_h6s5p"]
 [ext_resource type="Texture2D" uid="uid://dwjjq1rfnae7a" path="res://assets/world/autumn_field_puresky_2k.hdr" id="1_xhcgl"]
 [ext_resource type="PackedScene" uid="uid://blaieaqp413k7" path="res://addons/terrain_3d/tools/importer.tscn" id="2_q0ieo"]
-[ext_resource type="Texture2D" uid="uid://cnop2tbjqh6wy" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Albedo.jpg" id="3_ppxd5"]
 [ext_resource type="PackedScene" uid="uid://cb3uve7ru8bk2" path="res://scenes/vehicles/plane.tscn" id="4_nhixv"]
-[ext_resource type="Texture2D" uid="uid://ptu8yt7oj3jl" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Normal.jpg" id="4_v0vbv"]
-[ext_resource type="Texture2D" uid="uid://7awybl7xaxni" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Albedo.jpg" id="5_7q3bq"]
-[ext_resource type="Texture2D" uid="uid://dvgxlxwrkakat" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Normal.jpg" id="6_i5m8k"]
 
 [sub_resource type="Gradient" id="Gradient_gm7lh"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -44,6 +40,7 @@ _shader_parameters = {
 "noise_texture": SubResource("NoiseTexture2D_j3jkd"),
 "vertex_normals_distance": 128.0
 }
+show_checkered = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n2rv"]
 transparency = 4
@@ -61,20 +58,8 @@ density = 10.0
 material_override = SubResource("StandardMaterial3D_8n2rv")
 generated_type = 1
 
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_nul75"]
-name = "Wild Grass"
-albedo_texture = ExtResource("3_ppxd5")
-normal_texture = ExtResource("4_v0vbv")
-
-[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xvy4w"]
-name = "Rock"
-id = 1
-albedo_texture = ExtResource("5_7q3bq")
-normal_texture = ExtResource("6_i5m8k")
-
 [sub_resource type="Terrain3DAssets" id="Terrain3DAssets_7i18q"]
 mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_w5neu")])
-texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nul75"), SubResource("Terrain3DTextureAsset_xvy4w")])
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hk54o"]
 panorama = ExtResource("1_xhcgl")
