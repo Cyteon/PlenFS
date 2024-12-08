@@ -1,0 +1,7 @@
+Download the asset with, make sure its 2k, unzip the assets and place the folder here.
+The folder should be named exactly "Grass_Wild_vb0nceog_2K_surface_ms"
+
+
+Asset Resolution: 2K
+Asset ID: vb0nceog
+Asset Link: https://quixel.com/megascans/home?category=surface&category=grass&search=grass&assetId=vb0nceog
