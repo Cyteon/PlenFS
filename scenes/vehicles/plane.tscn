@@ -447,6 +447,9 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 0.137445, 0.99051, 0, -0.99051, 0.137445, 0.0133566, -0.0317418, -0.0717459)
 rotation_order = 0
 
+[node name="Attitude_Ball" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.99863, -0.052336, 0, 0.052336, 0.99863, 0.0311257, -0.0127075, -0.0720098)
+
 [node name="Cessna_Interior_Meter_01_MAT_0_Meter_01_MAT_0_098" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="47"]
 transform = Transform3D(0.999496, -0.0316488, 0.00228026, -0.00276553, -0.158476, -0.987359, 0.0316101, 0.986855, -0.158483, 0.0136141, -0.022581, -0.0704861)
 rotation_order = 0
