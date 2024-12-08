@@ -1,3 +1,176 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:58d24269c9c254716ad3caac0d9bc4a8d56639ef5e4f256eb00655e871f36fe6
-size 188751761
+[gd_scene load_steps=22 format=3 uid="uid://6dikkf4fk5jl"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_h6s5p"]
+[ext_resource type="Texture2D" uid="uid://dwjjq1rfnae7a" path="res://assets/world/autumn_field_puresky_2k.hdr" id="1_xhcgl"]
+[ext_resource type="PackedScene" uid="uid://blaieaqp413k7" path="res://addons/terrain_3d/tools/importer.tscn" id="2_q0ieo"]
+[ext_resource type="Texture2D" uid="uid://cnop2tbjqh6wy" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Albedo.jpg" id="3_ppxd5"]
+[ext_resource type="PackedScene" uid="uid://cb3uve7ru8bk2" path="res://scenes/vehicles/plane.tscn" id="4_nhixv"]
+[ext_resource type="Texture2D" uid="uid://ptu8yt7oj3jl" path="res://assets/quixel/Grass_Wild_vb0nceog_2K_surface_ms/vb0nceog_2K_Normal.jpg" id="4_v0vbv"]
+[ext_resource type="Texture2D" uid="uid://7awybl7xaxni" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Albedo.jpg" id="5_7q3bq"]
+[ext_resource type="Texture2D" uid="uid://dvgxlxwrkakat" path="res://assets/quixel/Rock_Mossy_visscjf_2K_surface_ms/visscjf_2K_Normal.jpg" id="6_i5m8k"]
+
+[sub_resource type="Gradient" id="Gradient_gm7lh"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6ko2t"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j3jkd"]
+seamless = true
+color_ramp = SubResource("Gradient_gm7lh")
+noise = SubResource("FastNoiseLite_6ko2t")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_n4wja"]
+_shader_parameters = {
+"blend_sharpness": 0.87,
+"height_blending": true,
+"macro_variation1": Color(1, 1, 1, 1),
+"macro_variation2": Color(1, 1, 1, 1),
+"noise1_angle": 0.0,
+"noise1_offset": Vector2(0.5, 0.5),
+"noise1_scale": 0.04,
+"noise2_scale": 0.076,
+"noise3_scale": 0.225,
+"noise_texture": SubResource("NoiseTexture2D_j3jkd"),
+"vertex_normals_distance": 128.0
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8n2rv"]
+transparency = 4
+cull_mode = 2
+vertex_color_use_as_albedo = true
+backlight_enabled = true
+backlight = Color(0.5, 0.5, 0.5, 1)
+distance_fade_mode = 1
+distance_fade_min_distance = 960.0
+distance_fade_max_distance = 480.0
+
+[sub_resource type="Terrain3DMeshAsset" id="Terrain3DMeshAsset_w5neu"]
+height_offset = 0.5
+density = 10.0
+material_override = SubResource("StandardMaterial3D_8n2rv")
+generated_type = 1
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_nul75"]
+name = "Wild Grass"
+albedo_texture = ExtResource("3_ppxd5")
+normal_texture = ExtResource("4_v0vbv")
+
+[sub_resource type="Terrain3DTextureAsset" id="Terrain3DTextureAsset_xvy4w"]
+name = "Rock"
+id = 1
+albedo_texture = ExtResource("5_7q3bq")
+normal_texture = ExtResource("6_i5m8k")
+
+[sub_resource type="Terrain3DAssets" id="Terrain3DAssets_7i18q"]
+mesh_list = Array[Terrain3DMeshAsset]([SubResource("Terrain3DMeshAsset_w5neu")])
+texture_list = Array[Terrain3DTextureAsset]([SubResource("Terrain3DTextureAsset_nul75"), SubResource("Terrain3DTextureAsset_xvy4w")])
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_hk54o"]
+panorama = ExtResource("1_xhcgl")
+energy_multiplier = 0.1
+
+[sub_resource type="Sky" id="Sky_tyhie"]
+sky_material = SubResource("PanoramaSkyMaterial_hk54o")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_f8w8m"]
+background_mode = 2
+background_intensity = 100000.0
+sky = SubResource("Sky_tyhie")
+tonemap_mode = 3
+tonemap_white = 8.0
+ssao_enabled = true
+ssao_detail = 2.0
+sdfgi_enabled = true
+sdfgi_bounce_feedback = 0.9
+glow_enabled = true
+glow_normalized = true
+glow_bloom = 0.2
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_gi_inject = 1.14
+volumetric_fog_anisotropy = 0.7
+volumetric_fog_sky_affect = 0.295
+adjustment_saturation = 1.17
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qo5hu"]
+exposure_multiplier = 3.069
+auto_exposure_scale = 0.22
+auto_exposure_speed = 0.8
+dof_blur_far_distance = 1.44
+dof_blur_near_distance = 0.01
+auto_exposure_min_sensitivity = 8.01
+
+[node name="World" type="Node3D"]
+script = ExtResource("1_h6s5p")
+
+[node name="Importer" parent="." instance=ExtResource("2_q0ieo")]
+data_directory = "res://resources/terrain"
+material = SubResource("Terrain3DMaterial_n4wja")
+assets = SubResource("Terrain3DAssets_7i18q")
+height_file_name = "C:/Users/Pkris/OneDrive/Skrivebord/projects/flight-game/assets/world/new.exr"
+import_position = Vector2i(-4000, -4000)
+import_scale = 800.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f8w8m")
+camera_attributes = SubResource("CameraAttributesPractical_qo5hu")
+
+[node name="Sun" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.605197, 0.796076, 0, -0.796076, 0.605197, -4.86868, 8.33126, 2.18251)
+shadow_enabled = true
+
+[node name="ReflectionProbe" type="ReflectionProbe" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 49.8991, 25.834, -30.0061)
+size = Vector3(10000, 10000, 1000)
+
+[node name="AeroBody3D" parent="." instance=ExtResource("4_nhixv")]
+transform = Transform3D(-0.193314, -0.283757, -0.939208, 0.114377, 0.944221, -0.308814, 0.974448, -0.167122, -0.150077, 986.462, 256.942, -585.741)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
+layout_mode = 1
+offset_left = 24.0
+offset_right = 314.0
+offset_bottom = 180.0
+
+[node name="kmh" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "100 km/h"
+
+[node name="knots" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "400 kn"
+
+[node name="throttle" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 64
+text = "100%"
