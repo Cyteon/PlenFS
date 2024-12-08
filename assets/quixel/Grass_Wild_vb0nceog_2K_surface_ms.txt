@@ -1,5 +1,6 @@
 Download the asset with, make sure its 2k, unzip the assets and place the folder here.
 The folder should be named exactly "Grass_Wild_vb0nceog_2K_surface_ms"
+Only Albedo and Normal is required
 
 Asset Resolution: 2K
 Asset ID: vb0nceog
