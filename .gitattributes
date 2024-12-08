@@ -1,3 +1,4 @@
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
 *.exr filter=lfs diff=lfs merge=lfs -text
+scenes/world.tscn filter=lfs diff=lfs merge=lfs -text
