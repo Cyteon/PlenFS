@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://diumjgjp8fs6e"]
+[gd_scene load_steps=57 format=4 uid="uid://cb3uve7ru8bk2"]
 
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_body_3d.gd" id="1_bscox"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/AeroControlComponent.gd" id="2_thbnj"]
@@ -419,12 +419,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44086, 0.196365, -0.215454
 use_as_traction = true
 wheel_radius = 0.2
 suspension_stiffness = 100.0
+script = ExtResource("11_6a2v3")
+MAX_STEER = 0.0
 
 [node name="WheelLeft" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.441, 0.196, -0.215)
 use_as_traction = true
 wheel_radius = 0.2
 suspension_stiffness = 100.0
+script = ExtResource("11_6a2v3")
+MAX_STEER = 0.0
 
 [node name="WheelFront" type="VehicleWheel3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.198975, 1.65186)
@@ -443,26 +447,29 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 0.137445, 0.99051, 0, -0.99051, 0.137445, 0.0133566, -0.0317418, -0.0717459)
 rotation_order = 0
 
-[node name="Cessna_Interior_Meter_01_MAT_0_Meter_01_MAT_0_098" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="85"]
-transform = Transform3D(-0.960787, 0.0301939, 0.275637, 0.268205, -0.151128, 0.951434, 0.070384, 0.988053, 0.137104, 0.0136141, -0.022581, -0.0704861)
+[node name="Cessna_Interior_Meter_01_MAT_0_Meter_01_MAT_0_098" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="47"]
+transform = Transform3D(0.999496, -0.0316488, 0.00228026, -0.00276553, -0.158476, -0.987359, 0.0316101, 0.986855, -0.158483, 0.0136141, -0.022581, -0.0704861)
 rotation_order = 0
 
-[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="184"]
+[node name="Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="145"]
 transform = Transform3D(-0.907886, -0.409777, -0.0884547, 0.417378, -0.903289, -0.0993197, -0.0392013, -0.12709, 0.991116, 0.00447844, -0.0316623, -0.0717789)
 
-[node name="Knots_Mach_Knots_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="185"]
+[node name="Knots_Mach_Knots_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="146"]
 transform = Transform3D(0.558204, 0.829675, 0.00688145, -0.817185, 0.551198, -0.16849, -0.143584, 0.088428, 0.98568, 0.0313102, -0.0316731, -0.0715126)
 
-[node name="Knots_Mach_Right_Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="187"]
+[node name="Knots_Mach_Right_Knots_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="148"]
 transform = Transform3D(0.999976, 0.00117627, 0.00688145, 0, 0.985703, -0.168489, -0.00698126, 0.168485, 0.985679, -0.0243089, -0.0231567, -0.0699804)
 
-[node name="Left_Alt_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="189"]
+[node name="Left_Alt_Indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="150"]
 transform = Transform3D(1, 0, 0, 0, 0.139173, 0.990268, 0, -0.990268, 0.139173, 0.0225372, -0.022371, -0.070397)
 rotation_order = 0
 
-[node name="Right_Alt_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="190"]
+[node name="Right_Alt_indicator" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="151"]
 transform = Transform3D(0.996637, -0.0819385, 0, 0.0131004, 0.159344, 0.987136, -0.0808845, -0.983817, 0.159881, -0.0343581, -0.031746, -0.0717051)
 rotation_order = 0
+
+[node name="Weird_Heading_Indicator_2_Thingy" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="160"]
+visible = false
 
 [node name="AeroVariablePropeller3D" type="Node3D" parent="." node_paths=PackedStringArray("propeller_blade")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00144668, 1.49708, 2.43385)

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_h6s5p"]
 [ext_resource type="Texture2D" uid="uid://dwjjq1rfnae7a" path="res://assets/world/autumn_field_puresky_2k.hdr" id="1_xhcgl"]
 [ext_resource type="PackedScene" uid="uid://blaieaqp413k7" path="res://addons/terrain_3d/tools/importer.tscn" id="2_q0ieo"]
-[ext_resource type="PackedScene" uid="uid://diumjgjp8fs6e" path="res://scenes/vehicles/plane.tscn" id="4_nhixv"]
+[ext_resource type="PackedScene" uid="uid://cb3uve7ru8bk2" path="res://scenes/vehicles/plane.tscn" id="4_nhixv"]
 
 [sub_resource type="Gradient" id="Gradient_gm7lh"]
 offsets = PackedFloat32Array(0.2, 1)

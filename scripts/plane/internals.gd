@@ -9,6 +9,7 @@ extends Node3D
 @onready var left_alt_indicator_2 = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Alt_Indicator_2"
 @onready var right_alt_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Right_Alt_indicator"
 @onready var heading_indicator = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Cessna_Interior_Meter_01_MAT_0_Meter_01_MAT_0_098"
+@onready var attitude_ball = $"../cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0/Attitude_Ball"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -61,7 +62,11 @@ func _process(delta: float) -> void:
 
 	# Heading Indicator
 	
-	#heading_indicator.rotation_degrees.y = 16 - get_parent().rotation_degrees.y
+	heading_indicator.rotation_degrees = Vector3(99.1, 16 - get_parent().rotation_degrees.y, 1.8)
+	
+	# Attitude
+	
+	attitude_ball.rotation_degrees.x = 3 - lerp(36, -33, (get_parent().rotation_degrees.x + 90) / 180)
 
 func _on_audio_stream_player_3d_finished() -> void:
 	$AudioStreamPlayer3D.play()
