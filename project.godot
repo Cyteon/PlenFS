@@ -27,6 +27,7 @@ AeroUnits="*res://addons/godot_aerodynamic_plugin/core/singletons/aero_units.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=2
+window/version="1.0.0-DEV"
 
 [editor_plugins]
 
