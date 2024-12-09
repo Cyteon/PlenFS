@@ -1,6 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+build
 
 assets/quixel/** 
 !assets/quixel/*.txt
