@@ -7,12 +7,15 @@
 bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn1wx"]
 bg_color = Color(0.345098, 0.356863, 0.439216, 1)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="Loading" type="Control"]
 layout_mode = 3

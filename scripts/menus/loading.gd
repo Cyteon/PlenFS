@@ -8,7 +8,6 @@ var finished: bool
 func _ready() -> void:
 	ResourceLoader.load_threaded_request("res://scenes/world.tscn")
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not finished:
