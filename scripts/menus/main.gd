@@ -6,12 +6,11 @@ func _ready() -> void:
 	$Version.text = ProjectSettings.get_setting("application/config/version")
 
 func _on_start_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/menus/loading.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/tutorial.tscn")
 
 
 func _on_credits_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/credits.tscn")
-
 
 
 func _mouse_entered(path: String) -> void:
