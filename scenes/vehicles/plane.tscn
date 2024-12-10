@@ -372,15 +372,22 @@ shape = SubResource("BoxShape3D_x5npy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00268555, 2.18148, -0.454102)
 shape = SubResource("BoxShape3D_jiuc0")
 
-[node name="SpringArm" type="SpringArm3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.950548, 0.310577, 0, -0.310577, -0.950548, 0.264, 1.90517, 0.0679433)
-collision_mask = 0
-spring_length = 0.0
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm"]
-transform = Transform3D(-1, 6.3789e-08, 5.97805e-08, 0, -0.683809, 0.729661, 8.74228e-08, 0.729661, 0.683809, -6.89328e-05, 0.000183344, 0.000262804)
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(-1, 6.3789e-08, 5.97805e-08, 2.71515e-08, 0.876609, -0.481203, -8.30996e-08, -0.481203, -0.876609, 0.263931, 1.90508, 0.0676365)
 current = true
 script = ExtResource("6_ipdki")
+
+[node name="SpringArmNode" type="Node3D" parent="."]
+
+[node name="SpringArm" type="SpringArm3D" parent="SpringArmNode"]
+transform = Transform3D(1, 0, 0, 0, -0.950548, 0.310577, 0, -0.310577, -0.950548, 0, 1.905, 0)
+collision_mask = 0
+spring_length = 10.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArmNode/SpringArm"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="WingR" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3.385, 2.102, -0.661)
