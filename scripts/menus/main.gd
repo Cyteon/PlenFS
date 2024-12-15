@@ -25,10 +25,5 @@ func _mouse_exited(path: String) -> void:
 	
 	tween.tween_property(btn, "modulate", Color.WHITE, .5)
 
-
-func _mouse_enter(extra_arg_0: String) -> void:
-	pass # Replace with function body.
-
-
-func _on_start_button_mouse_entered() -> void:
-	pass # Replace with function body.
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

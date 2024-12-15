@@ -69,6 +69,23 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_hxipr")
 text = "Credits"
 alignment = 0
 
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hxipr")
+text = "Exit"
+alignment = 0
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 0
 offset_left = 48.0
@@ -79,11 +96,18 @@ theme_override_font_sizes/font_size = 128
 text = "PlenFS"
 
 [node name="Version" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1584.0
-offset_top = 952.0
-offset_right = 1860.0
-offset_bottom = 1040.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -336.0
+offset_top = -120.0
+offset_right = -60.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 32
 text = "VERSION"
 horizontal_alignment = 2
@@ -95,3 +119,6 @@ vertical_alignment = 2
 [connection signal="mouse_entered" from="VBoxContainer/CreditsButton" to="." method="_mouse_entered" binds= ["VBoxContainer/CreditsButton"]]
 [connection signal="mouse_exited" from="VBoxContainer/CreditsButton" to="." method="_mouse_exited" binds= ["VBoxContainer/CreditsButton"]]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_mouse_entered" binds= ["VBoxContainer/ExitButton"]]
+[connection signal="mouse_exited" from="VBoxContainer/ExitButton" to="." method="_mouse_exited" binds= ["VBoxContainer/ExitButton"]]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

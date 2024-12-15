@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="PlenFS"
-config/version="1.0.0-DEV"
+config/version="1.0.0"
 run/main_scene="res://scenes/menus/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/image="res://assets/images/splash.png"
@@ -26,8 +26,7 @@ AeroUnits="*res://addons/godot_aerodynamic_plugin/core/singletons/aero_units.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
-window/version="1.0.0-DEV"
+window/size/mode=3
 
 [editor_plugins]
 
