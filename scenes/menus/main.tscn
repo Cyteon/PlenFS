@@ -1,10 +1,58 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpoigd3cg103n"]
+[gd_scene load_steps=13 format=3 uid="uid://bpoigd3cg103n"]
 
 [ext_resource type="Script" path="res://scripts/menus/main.gd" id="1_krxqh"]
 [ext_resource type="Texture2D" uid="uid://cmhjy282mipo2" path="res://assets/images/gradient.png" id="2_8t678"]
-[ext_resource type="Theme" uid="uid://doahwptkmmivc" path="res://resources/theme.tres" id="3_qc5qi"]
+[ext_resource type="Texture2D" uid="uid://b3a24u1by6r6k" path="res://assets/icons/toggle_on.png" id="3_7koy7"]
+[ext_resource type="Texture2D" uid="uid://dmqley5tyhg0v" path="res://assets/icons/toggle_off.png" id="4_epup3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hxipr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qgrp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6weol"]
+content_margin_left = 8.0
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5nl01"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gf1bs"]
+content_margin_left = 8.0
+content_margin_right = 8.0
+bg_color = Color(0.0666667, 0.0666667, 0.105882, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lddpu"]
+bg_color = Color(0.192157, 0.196078, 0.266667, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cop55"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0941176, 0.0980392, 0.14902, 1)
+
+[sub_resource type="Theme" id="Theme_3bw0g"]
+CheckButton/icons/checked = ExtResource("3_7koy7")
+CheckButton/icons/checked_disabled = ExtResource("4_epup3")
+CheckButton/icons/unchecked = ExtResource("4_epup3")
+CheckButton/styles/focus = SubResource("StyleBoxEmpty_8qgrp")
+LineEdit/colors/font_color = Color(1, 1, 1, 1)
+LineEdit/font_sizes/font_size = 32
+LineEdit/styles/focus = SubResource("StyleBoxFlat_6weol")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_6weol")
+OptionButton/font_sizes/font_size = 64
+OptionButton/styles/focus = SubResource("StyleBoxEmpty_5nl01")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_gf1bs")
+PopupMenu/font_sizes/font_size = 64
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_lddpu")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_cop55")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -141,7 +189,7 @@ offset_top = 40.0
 offset_right = -39.0
 offset_bottom = 128.0
 grow_horizontal = 0
-theme = ExtResource("3_qc5qi")
+theme = SubResource("Theme_3bw0g")
 selected = 0
 item_count = 2
 popup/item_0/text = "Day"
