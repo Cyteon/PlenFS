@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bpoigd3cg103n"]
+[gd_scene load_steps=5 format=3 uid="uid://bpoigd3cg103n"]
 
 [ext_resource type="Script" path="res://scripts/menus/main.gd" id="1_krxqh"]
 [ext_resource type="Texture2D" uid="uid://cmhjy282mipo2" path="res://assets/images/gradient.png" id="2_8t678"]
+[ext_resource type="Theme" uid="uid://doahwptkmmivc" path="res://resources/theme.tres" id="3_qc5qi"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hxipr"]
 
@@ -130,6 +131,23 @@ text = "VERSION"
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 16.0
+offset_right = -15.0
+offset_bottom = 104.0
+grow_horizontal = 0
+theme = ExtResource("3_qc5qi")
+selected = 0
+item_count = 2
+popup/item_0/text = "Day"
+popup/item_1/text = "Night"
+popup/item_1/id = 1
+
 [connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_mouse_entered" binds= ["VBoxContainer/PlayButton"]]
 [connection signal="mouse_exited" from="VBoxContainer/PlayButton" to="." method="_mouse_exited" binds= ["VBoxContainer/PlayButton"]]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
@@ -142,3 +160,4 @@ vertical_alignment = 2
 [connection signal="mouse_entered" from="VBoxContainer/ExitButton" to="." method="_mouse_entered" binds= ["VBoxContainer/ExitButton"]]
 [connection signal="mouse_exited" from="VBoxContainer/ExitButton" to="." method="_mouse_exited" binds= ["VBoxContainer/ExitButton"]]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

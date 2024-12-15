@@ -8,6 +8,9 @@ var anti_aliasing: int = 0
 # display
 var fullscreen: bool = true
 
+# Not saved, aka in memory only
+var time: int = 0
+
 func _ready() -> void:
 	load_()
 
