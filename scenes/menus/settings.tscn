@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5l447e0s72vo"]
+
+[ext_resource type="Script" path="res://scripts/menus/settings.gd" id="1_1l530"]
+[ext_resource type="Texture2D" uid="uid://cmhjy282mipo2" path="res://assets/images/gradient.png" id="1_ig4wh"]
+[ext_resource type="Theme" uid="uid://doahwptkmmivc" path="res://resources/theme.tres" id="3_crpbe"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o8xsq"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1l530")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_ig4wh")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 24.0
+offset_right = 272.0
+offset_bottom = 88.0
+theme_override_font_sizes/font_size = 96
+text = "Settings"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -184.0
+offset_right = -28.0
+offset_bottom = 96.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_o8xsq")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_o8xsq")
+text = "Back"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 144.0
+offset_right = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 64
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Graphics"
+
+[node name="MaxFPS" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Max FPS"
+
+[node name="SpinBox" type="SpinBox" parent="HBoxContainer/VBoxContainer/MaxFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_crpbe")
+max_value = 10000.0
+suffix = "FPS"
+
+[node name="ShowFPS" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/ShowFPS"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Show FPS"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/ShowFPS"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+
+[node name="AntiAliasing" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/AntiAliasing"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Anti Aliasing"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/VBoxContainer/AntiAliasing"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+selected = 0
+item_count = 4
+popup/item_0/text = "Off"
+popup/item_1/text = "2x"
+popup/item_1/id = 1
+popup/item_2/text = "4x"
+popup/item_2/id = 2
+popup/item_3/text = "8x"
+popup/item_3/id = 3
+
+[node name="Display" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Display"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Display"
+
+[node name="Fullscreen" type="HBoxContainer" parent="HBoxContainer/Display"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Display/Fullscreen"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Fullscreen"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/Display/Fullscreen"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/MaxFPS/SpinBox" to="." method="_value_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/ShowFPS/CheckButton" to="." method="_value_changed"]
+[connection signal="item_selected" from="HBoxContainer/VBoxContainer/AntiAliasing/OptionButton" to="." method="_value_changed"]
+[connection signal="toggled" from="HBoxContainer/Display/Fullscreen/CheckButton" to="." method="_value_changed"]

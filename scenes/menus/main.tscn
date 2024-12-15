@@ -52,6 +52,23 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_hxipr")
 text = "Play"
 alignment = 0
 
+[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxEmpty_hxipr")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_hxipr")
+text = "Settings"
+alignment = 0
+
 [node name="CreditsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
@@ -116,6 +133,9 @@ vertical_alignment = 2
 [connection signal="mouse_entered" from="VBoxContainer/PlayButton" to="." method="_mouse_entered" binds= ["VBoxContainer/PlayButton"]]
 [connection signal="mouse_exited" from="VBoxContainer/PlayButton" to="." method="_mouse_exited" binds= ["VBoxContainer/PlayButton"]]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_start_button_pressed"]
+[connection signal="mouse_entered" from="VBoxContainer/SettingsButton" to="." method="_mouse_entered" binds= ["VBoxContainer/SettingsButton"]]
+[connection signal="mouse_exited" from="VBoxContainer/SettingsButton" to="." method="_mouse_exited" binds= ["VBoxContainer/SettingsButton"]]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="mouse_entered" from="VBoxContainer/CreditsButton" to="." method="_mouse_entered" binds= ["VBoxContainer/CreditsButton"]]
 [connection signal="mouse_exited" from="VBoxContainer/CreditsButton" to="." method="_mouse_exited" binds= ["VBoxContainer/CreditsButton"]]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
