@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=4 uid="uid://cb3uve7ru8bk2"]
+[gd_scene load_steps=60 format=4 uid="uid://cb3uve7ru8bk2"]
 
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/core/aero_body_3d.gd" id="1_bscox"]
 [ext_resource type="Script" path="res://addons/godot_aerodynamic_plugin/components/AeroControlComponent.gd" id="2_thbnj"]
@@ -234,6 +234,44 @@ max_value = Vector3(0.15, 0, 0)
 limit_movement_speed = false
 movement_speed = 1.0
 yaw_config = SubResource("Resource_b2de6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pmgbo"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+roughness = 0.5
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6q0mx"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP//AAD//wAA//8AAAAAAAAAAAAA//8AAAAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_t6aoa"]
+resource_name = "cessna_172_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray("AAD///////8AAAAA//8AAA=="),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray("AAADAAEAAAACAAMA"),
+"material": SubResource("StandardMaterial3D_pmgbo"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray("AAAAAP///7///wAA////vwAAAAAAAP+///8AAAAA/7////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6q0mx")
 
 [sub_resource type="Resource" id="Resource_lyo2v"]
 script = ExtResource("9_oveu3")
@@ -482,6 +520,11 @@ rotation_order = 0
 
 [node name="Weird_Heading_Indicator_2_Thingy" parent="cessna_172/Cessna-172/Cessna_Interior/Cessna_Interior_Meter_01_MAT_0" index="160"]
 visible = false
+
+[node name="Plane2" type="MeshInstance3D" parent="cessna_172"]
+transform = Transform3D(0.0257694, 0, 0, 0, -0.00482583, -0.00712601, 0, 0.0764889, -0.000449594, 0.153064, 1.76849, 0.785755)
+mesh = SubResource("ArrayMesh_t6aoa")
+skeleton = NodePath("")
 
 [node name="AeroVariablePropeller3D" type="Node3D" parent="." node_paths=PackedStringArray("propeller_blade")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.00144668, 1.49708, 2.43385)
