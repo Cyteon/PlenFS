@@ -69,11 +69,26 @@ theme_override_constants/separation = 64
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "Graphics"
+
+[node name="ShowPerfMonitor" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/ShowPerfMonitor"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Perf. Monitor"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/ShowPerfMonitor"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
 
 [node name="MaxFPS" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(370, 0)
@@ -91,20 +106,6 @@ size_flags_horizontal = 3
 theme = ExtResource("3_crpbe")
 max_value = 10000.0
 suffix = "FPS"
-
-[node name="ShowFPS" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(370, 0)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/ShowFPS"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 42
-text = "Show FPS"
-
-[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/ShowFPS"]
-layout_mode = 2
-theme = ExtResource("3_crpbe")
 
 [node name="AntiAliasing" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
 custom_minimum_size = Vector2(370, 0)
@@ -129,8 +130,51 @@ popup/item_2/id = 2
 popup/item_3/text = "8x"
 popup/item_3/id = 3
 
+[node name="FXAA" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/FXAA"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "FXAA"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/FXAA"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+
+[node name="TAA" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/TAA"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "TAA"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/TAA"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+
+[node name="VSync" type="HBoxContainer" parent="HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(370, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer/VSync"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "VSync"
+
+[node name="CheckButton" type="CheckButton" parent="HBoxContainer/VBoxContainer/VSync"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+
 [node name="Display" type="VBoxContainer" parent="HBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 16
 
 [node name="Label" type="Label" parent="HBoxContainer/Display"]
 layout_mode = 2
@@ -152,7 +196,10 @@ layout_mode = 2
 theme = ExtResource("3_crpbe")
 
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/ShowPerfMonitor/CheckButton" to="." method="_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/MaxFPS/SpinBox" to="." method="_value_changed"]
-[connection signal="toggled" from="HBoxContainer/VBoxContainer/ShowFPS/CheckButton" to="." method="_value_changed"]
 [connection signal="item_selected" from="HBoxContainer/VBoxContainer/AntiAliasing/OptionButton" to="." method="_value_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/FXAA/CheckButton" to="." method="_value_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/TAA/CheckButton" to="." method="_value_changed"]
+[connection signal="toggled" from="HBoxContainer/VBoxContainer/VSync/CheckButton" to="." method="_value_changed"]
 [connection signal="toggled" from="HBoxContainer/Display/Fullscreen/CheckButton" to="." method="_value_changed"]

@@ -2,8 +2,11 @@ extends Node
 
 # graphics
 var max_fps: int = 0
-var show_fps: bool = false
-var anti_aliasing: int = 0
+var show_perf_monitor: bool = false
+var anti_aliasing: int = 2
+var taa: bool = true
+var fxaa: bool = false
+var vsync: bool = false
 
 # display
 var fullscreen: bool = true
@@ -31,13 +34,20 @@ func apply() -> void:
 		DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen
 		else DisplayServer.WINDOW_MODE_WINDOWED
 	)
+	
+	get_viewport().use_taa = taa
+	get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if fxaa else Viewport.SCREEN_SPACE_AA_DISABLED
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync else DisplayServer.VSYNC_DISABLED)
 
 func save() -> void:
 	var config = ConfigFile.new()
 	
 	config.set_value("graphics", "max_fps", max_fps)
-	config.set_value("graphics", "show_fps", show_fps)
+	config.set_value("graphics", "show_perf_monitor", show_perf_monitor)
 	config.set_value("graphics", "anti_aliasing", anti_aliasing)
+	config.set_value("graphics", "taa", taa)
+	config.set_value("graphics", "fxaa", fxaa)
+	config.set_value("graphics", "vsync", vsync)
 	
 	config.set_value("display", "fullscreen", fullscreen)
 	
@@ -53,8 +63,11 @@ func load_() -> void:
 		return
 	
 	max_fps = config.get_value("graphics", "max_fps", 0)
-	show_fps = config.get_value("graphics", "show_fps", false)
-	anti_aliasing = config.get_value("graphics", "anti_aliasing", 0)
+	show_perf_monitor = config.get_value("graphics", "show_perf_monitor", false)
+	anti_aliasing = config.get_value("graphics", "anti_aliasing", 2)
+	taa = config.get_value("graphics", "taa", true)
+	fxaa = config.get_value("graphics", "fxaa", false)
+	vsync = config.get_value("graphics", "vsync", false)
 	
 	fullscreen = config.get_value("display", "fullscreen", true)
 	
