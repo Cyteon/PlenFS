@@ -195,6 +195,29 @@ text = "Fullscreen"
 layout_mode = 2
 theme = ExtResource("3_crpbe")
 
+[node name="Resolution" type="HBoxContainer" parent="HBoxContainer/Display"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/Display/Resolution"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 42
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/Display/Resolution"]
+layout_mode = 2
+theme = ExtResource("3_crpbe")
+selected = 1
+item_count = 4
+popup/item_0/text = "2560x1440"
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 1
+popup/item_2/text = "1600x900"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
+
 [connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/ShowPerfMonitor/CheckButton" to="." method="_value_changed"]
 [connection signal="value_changed" from="HBoxContainer/VBoxContainer/MaxFPS/SpinBox" to="." method="_value_changed"]
@@ -203,3 +226,4 @@ theme = ExtResource("3_crpbe")
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/TAA/CheckButton" to="." method="_value_changed"]
 [connection signal="toggled" from="HBoxContainer/VBoxContainer/VSync/CheckButton" to="." method="_value_changed"]
 [connection signal="toggled" from="HBoxContainer/Display/Fullscreen/CheckButton" to="." method="_value_changed"]
+[connection signal="item_selected" from="HBoxContainer/Display/Resolution/OptionButton" to="." method="_value_changed"]

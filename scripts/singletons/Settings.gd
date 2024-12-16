@@ -10,6 +10,7 @@ var vsync: bool = false
 
 # display
 var fullscreen: bool = true
+var resolution: int = 1
 
 # Not saved, aka in memory only
 var time: int = 0
@@ -30,14 +31,24 @@ func apply() -> void:
 		3:
 			get_viewport().msaa_3d = Viewport.MSAA_8X
 	
+	get_viewport().use_taa = taa
+	get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if fxaa else Viewport.SCREEN_SPACE_AA_DISABLED
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync else DisplayServer.VSYNC_DISABLED)
+	
+	match resolution:
+		0:
+			get_window().set_size(Vector2(2560, 1440))
+		1:
+			get_window().set_size(Vector2(1920, 1080))
+		2:
+			get_window().set_size(Vector2(1600, 900))
+		3:
+			get_window().set_size(Vector2(1280, 720))
+	
 	DisplayServer.window_set_mode(
 		DisplayServer.WINDOW_MODE_FULLSCREEN if fullscreen
 		else DisplayServer.WINDOW_MODE_WINDOWED
 	)
-	
-	get_viewport().use_taa = taa
-	get_viewport().screen_space_aa = Viewport.SCREEN_SPACE_AA_FXAA if fxaa else Viewport.SCREEN_SPACE_AA_DISABLED
-	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync else DisplayServer.VSYNC_DISABLED)
 
 func save() -> void:
 	var config = ConfigFile.new()
@@ -50,6 +61,7 @@ func save() -> void:
 	config.set_value("graphics", "vsync", vsync)
 	
 	config.set_value("display", "fullscreen", fullscreen)
+	config.set_value("display", "resolution", resolution)
 	
 	config.save("user://settings.cfg")
 	
@@ -70,5 +82,6 @@ func load_() -> void:
 	vsync = config.get_value("graphics", "vsync", false)
 	
 	fullscreen = config.get_value("display", "fullscreen", true)
+	resolution = config.get_value("display", "resolution", 1)
 	
 	apply()

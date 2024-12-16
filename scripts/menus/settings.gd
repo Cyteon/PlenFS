@@ -6,10 +6,13 @@ func _ready() -> void:
 	$HBoxContainer/VBoxContainer/MaxFPS/SpinBox.value = Settings.max_fps
 	$HBoxContainer/VBoxContainer/ShowPerfMonitor/CheckButton.button_pressed = Settings.show_perf_monitor
 	$HBoxContainer/VBoxContainer/AntiAliasing/OptionButton.selected = Settings.anti_aliasing
-	$HBoxContainer/Display/Fullscreen/CheckButton.button_pressed = Settings.fullscreen
 	$HBoxContainer/VBoxContainer/FXAA/CheckButton.button_pressed = Settings.fxaa
 	$HBoxContainer/VBoxContainer/TAA/CheckButton.button_pressed = Settings.taa
 	$HBoxContainer/VBoxContainer/VSync/CheckButton.button_pressed = Settings.vsync
+	
+	$HBoxContainer/Display/Fullscreen/CheckButton.button_pressed = Settings.fullscreen
+	$HBoxContainer/Display/Resolution/OptionButton.selected = Settings.resolution
+	$HBoxContainer/Display/Resolution/OptionButton.disabled = Settings.fullscreen
 	
 	loaded = true
 
@@ -28,5 +31,7 @@ func _value_changed(val) -> void:
 	Settings.vsync = $HBoxContainer/VBoxContainer/VSync/CheckButton.button_pressed
 	
 	Settings.fullscreen = $HBoxContainer/Display/Fullscreen/CheckButton.button_pressed
+	Settings.resolution = $HBoxContainer/Display/Resolution/OptionButton.selected
+	$HBoxContainer/Display/Resolution/OptionButton.disabled = Settings.fullscreen
 		
 	Settings.save()
